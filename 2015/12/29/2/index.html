@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/12/29/2/index.html">
 <meta property="og:site_name" content="SickQ's g">
 <meta property="og:description" content="Unity中常用单例模式，用来统一管理数据，UI或者逻辑等等">
-<meta property="og:updated_time" content="2015-12-29T17:11:52.772Z">
+<meta property="og:updated_time" content="2015-12-30T17:07:17.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity中单例模式">
 <meta name="twitter:description" content="Unity中常用单例模式，用来统一管理数据，UI或者逻辑等等">
@@ -104,7 +104,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Unity/" style="font-size: 20px;">Unity</a> <a href="/tags/other/" style="font-size: 10px;">other</a>
+						<a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Unity/" style="font-size: 20px;">Unity</a> <a href="/tags/other/" style="font-size: 10px;">other</a>
 					</div>
 				</section>
 				
@@ -207,8 +207,11 @@
       
         <p>Unity中常用单例模式，用来统一管理数据，UI或者逻辑等等</p>
 <a id="more"></a>
-<h2 id="Unity_u4E2D_u5355_u4F8B_u6A21_u5F0F"><a href="#Unity_u4E2D_u5355_u4F8B_u6A21_u5F0F" class="headerlink" title="Unity中单例模式"></a>Unity中单例模式</h2><h3 id="u4F5C_u7528"><a href="#u4F5C_u7528" class="headerlink" title="作用"></a>作用</h3><p>Unity中使用单例模式的作用：可以保证脚本在整个游戏过程中永远唯一，与MVC架构同时存在，可以使游戏架构更加清晰</p>
-<h3 id="u5E38_u89C1_u7684_u5355_u4F8B_u6A21_u5F0F"><a href="#u5E38_u89C1_u7684_u5355_u4F8B_u6A21_u5F0F" class="headerlink" title="常见的单例模式"></a>常见的单例模式</h3><p>以下是Unity中常见的单例模式</p>
+<h2 id="Unity_u4E2D_u5355_u4F8B_u6A21_u5F0F"><a href="#Unity_u4E2D_u5355_u4F8B_u6A21_u5F0F" class="headerlink" title="Unity中单例模式"></a>Unity中单例模式</h2><hr>
+<h3 id="u4F5C_u7528"><a href="#u4F5C_u7528" class="headerlink" title="作用"></a>作用</h3><hr>
+<p>Unity中使用单例模式的作用：可以保证脚本在整个游戏过程中永远唯一，与MVC架构同时存在，可以使游戏架构更加清晰</p>
+<h3 id="u5E38_u89C1_u7684_u5355_u4F8B_u6A21_u5F0F"><a href="#u5E38_u89C1_u7684_u5355_u4F8B_u6A21_u5F0F" class="headerlink" title="常见的单例模式"></a>常见的单例模式</h3><hr>
+<p>以下是Unity中常见的单例模式</p>
 <ul>
 <li>一<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class TestSingleton&#10;&#123;&#10;    private static TestSingleton _instance;&#10;    public static TestSingleton Instance&#10;    &#123;&#10;        get&#10;        &#123;&#10;            return _instance;&#10;        &#125;&#10;    &#125;&#10;&#10;    void Awake()&#10;    &#123;&#10;        if(_instance != null)&#10;        &#123;&#10;            Debug.Log(&#34;Another TestSingleton has in scene&#34;);&#10;        &#125;&#10;        _instance = this;&#10;        //DontDestoryOnLoad(this.gameObject);&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -219,6 +222,7 @@
 </li>
 </ul>
 <p>ps: 这种的单例模式在首次调用的时候会自动创建，直接通过TestSingleton1.Instance使用</p>
+<hr>
 
       
     </div>
@@ -228,11 +232,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/30/3/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/12/30/4/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Unity与Android通信
+          Android播放视频
         
       </div>
     </a>
