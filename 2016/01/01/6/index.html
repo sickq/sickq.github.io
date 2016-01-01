@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Unity与Android通信 | SickQ&#39;s g</title>
+  <title>Android内存管理机制 | SickQ&#39;s g</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在Unity中实现与Android相互通信Unity接入Andropid相关SDK">
+  <meta name="description" content="Android应用的内存分配">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity与Android通信">
-<meta property="og:url" content="http://yoursite.com/2015/12/31/3/index.html">
+<meta property="og:title" content="Android内存管理机制">
+<meta property="og:url" content="http://yoursite.com/2016/01/01/6/index.html">
 <meta property="og:site_name" content="SickQ's g">
-<meta property="og:description" content="在Unity中实现与Android相互通信Unity接入Andropid相关SDK">
-<meta property="og:updated_time" content="2015-12-31T19:25:07.134Z">
+<meta property="og:description" content="Android应用的内存分配">
+<meta property="og:updated_time" content="2015-12-31T18:55:40.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity与Android通信">
-<meta name="twitter:description" content="在Unity中实现与Android相互通信Unity接入Andropid相关SDK">
+<meta name="twitter:title" content="Android内存管理机制">
+<meta name="twitter:description" content="Android应用的内存分配">
   
     <link rel="alternative" href="/atom.xml" title="SickQ&#39;s g" type="application/atom+xml">
   
@@ -164,11 +164,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-3" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-6" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/31/3/" class="article-date">
-  	<time datetime="2015-12-30T16:25:30.000Z" itemprop="datePublished">2015-12-31</time>
+      <a href="/2016/01/01/6/" class="article-date">
+  	<time datetime="2015-12-31T18:55:40.422Z" itemprop="datePublished">2016-01-01</time>
 </a>
     </div>
   
@@ -181,7 +181,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Unity与Android通信
+      Android内存管理机制
     </h1>
   
 
@@ -190,7 +190,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity-Android/">Unity,Android</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 	</div>
 
         
@@ -205,35 +205,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在Unity中实现与Android相互通信<br>Unity接入Andropid相关SDK</p>
+        <p>Android应用的内存分配</p>
 <a id="more"></a>
-<h2 id="Unity_u4E0EAndroid_u901A_u4FE1"><a href="#Unity_u4E0EAndroid_u901A_u4FE1" class="headerlink" title="Unity与Android通信"></a>Unity与Android通信</h2><hr>
-<p>Unity和Android有两种交互方式：</p>
-<ul>
-<li>1 Unity调用Android平台编写的jar包</li>
-<li>2 将Unity项目导出为Android项目，然后编写Android层的代码</li>
-</ul>
-<p>详细参考：<a href="http://blog.csdn.net/qinyuanpei/article/details/39348677" target="_blank" rel="external">Unity与Android通信</a></p>
-<p>Android调用Unity函数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnityPlayer.UnitySendMessage(String gameObjectName, String method, String params)</span><br></pre></td></tr></table></figure></p>
-<p>gameObjectName：为Untiy Scene中的物体名称<br>methodName：为对应物体上面的脚本中函数的名字<br>params：需要传入函数的参数</p>
-<p>Unity中调用Android函数<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AndroidJavaClass jc = new AndroidJavaClass(&#34;com.unity3d.player.UnityPlayer&#34;);&#10;AndroidJavaObject jo = jc.GetStatic&#60;AndroidJavaObject&#62;(&#34;currentActivity&#34;);&#10;jo.Call(&#34;methodInJava&#34;, params);</span><br></pre></td></tr></table></figure></p>
-<p>params：params的个数根据java中函数参数个数</p>
-<p>注意：</p>
-<ol>
-<li><p>新建Android工程，包名要与Unity项目的工程名字相同</p>
+<h2 id="Android_u5185_u5B58_u7BA1_u7406_u673A_u5236"><a href="#Android_u5185_u5B58_u7BA1_u7406_u673A_u5236" class="headerlink" title="Android内存管理机制"></a>Android内存管理机制</h2><hr>
+<p>参考<a href="http://m.blog.csdn.net/blog/linghu_java/39480761.html" target="_blank" rel="external">这个文章</a></p>
+<h3 id="Android_u4E2DRAM_u3001ROM_u3001SD_u5361_u5185_u5B58_u7684_u533A_u522B"><a href="#Android_u4E2DRAM_u3001ROM_u3001SD_u5361_u5185_u5B58_u7684_u533A_u522B" class="headerlink" title="Android中RAM、ROM、SD卡内存的区别"></a>Android中RAM、ROM、SD卡内存的区别</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">name</th>
+<th style="text-align:left">解释</th>
+<th style="text-align:left">参照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">RAM</td>
+<td style="text-align:left">RAM是物理内存，Android应用的堆内存(Heap)和栈内存(Stack)存储在RAM中</td>
+<td style="text-align:left">类似PC的内存条</td>
+</tr>
+<tr>
+<td style="text-align:left">ROM</td>
+<td style="text-align:left">ROM是虚拟内存，主要存储系统的文件，和App的相关数据，应用进程的内存空间也是虚拟内存</td>
+<td style="text-align:left">类似PC的C盘</td>
+</tr>
+<tr>
+<td style="text-align:left">SD卡</td>
+<td style="text-align:left">内存卡，存储应用数据和其他文件</td>
+<td style="text-align:left">类似PC的其他盘</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Android_u8FDB_u7A0B_u7684_u79CD_u7C7B_u548C_u533A_u522B"><a href="#Android_u8FDB_u7A0B_u7684_u79CD_u7C7B_u548C_u533A_u522B" class="headerlink" title="Android进程的种类和区别"></a>Android进程的种类和区别</h3><ol>
+<li><p>Native进程：C/C++通过jni实现</p>
 </li>
-<li><p>把\Unity\Editor\Data\PlaybackEngines\androidplayer\release\bin\classes.jar这个路径下的classes.jar包添加到工程的引用中，工程中的MainActivity继承UnityPlayerActivity</p>
+<li><p>Java进程：Android中运行在dalvik虚拟机上的进程</p>
 </li>
-<li><p>导出的jar包只含有src目录下的文件即可（如果有特殊调用android中的布局，需要用到android中的反射机制，动态获取各种布局和资源文件在R.java中的id）</p>
+</ol>
+<h3 id="Android_u4E2D_u8FDB_u7A0B_u7684_u5806_u5185_u5B58_u79CD_u7C7B"><a href="#Android_u4E2D_u8FDB_u7A0B_u7684_u5806_u5185_u5B58_u79CD_u7C7B" class="headerlink" title="Android中进程的堆内存种类"></a>Android中进程的堆内存种类</h3><ol>
+<li><p>native heap：C/C++申请的内存空间在native heap中</p>
 </li>
-<li><p>导出的jar包放在Unity的Assets/Plugins/Android/bin</p>
-</li>
-<li><p>需要引用的jar包放在Assets/Plugins/Android/libs</p>
-</li>
-<li><p>需要的资源文件，同时放在Unity下的Assets/Plugins/Android/res，在Unity5中，如果这么做，会在导出工程时，附带一个单独的只包含res下资源的lib工程，所以建议在导出工程之后在单独将res文件移动到导出的android工程中</p>
-</li>
-<li><p>有些函数要求必须在Java的UI线程中调用，但是直接从Unity调用的Android函数是不会在UI线程中调用的，所以：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">currentActivity.runOnUiThread(<span class="keyword">new</span> Runnable()</span><br><span class="line">&#123;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="comment">//TODO</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>dalvik heap：java申请的内存空间，Android系统对dalvik heap做了硬性限制，当java申请的java空间超过上限时，就会抛出OOM异常。</p>
 </li>
 </ol>
 <hr>
@@ -246,18 +257,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/31/5/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/01/01/7/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Android生成KeyStore文件
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2015/12/30/4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android播放视频</div>
+    <a href="/2015/12/31/5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android生成KeyStore文件</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -303,7 +314,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="3" data-title="Unity与Android通信" data-url="http://yoursite.com/2015/12/31/3/"></div>
+	<div class="ds-thread" data-thread-key="6" data-title="Android内存管理机制" data-url="http://yoursite.com/2016/01/01/6/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
