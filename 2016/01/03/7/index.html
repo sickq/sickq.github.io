@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Android内存管理机制 | SickQ&#39;s g</title>
+  <title>C#中out和ref的区别 | SickQ&#39;s g</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android应用的内存分配">
+  <meta name="description" content="C#中用out、ref修饰变量的区别">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android内存管理机制">
-<meta property="og:url" content="http://yoursite.com/2016/01/01/6/index.html">
+<meta property="og:title" content="C#中out和ref的区别">
+<meta property="og:url" content="http://yoursite.com/2016/01/03/7/index.html">
 <meta property="og:site_name" content="SickQ's g">
-<meta property="og:description" content="Android应用的内存分配">
-<meta property="og:updated_time" content="2015-12-31T18:55:40.422Z">
+<meta property="og:description" content="C#中用out、ref修饰变量的区别">
+<meta property="og:updated_time" content="2016-01-03T15:56:57.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android内存管理机制">
-<meta name="twitter:description" content="Android应用的内存分配">
+<meta name="twitter:title" content="C#中out和ref的区别">
+<meta name="twitter:description" content="C#中用out、ref修饰变量的区别">
   
     <link rel="alternative" href="/atom.xml" title="SickQ&#39;s g" type="application/atom+xml">
   
@@ -104,7 +104,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Unity/" style="font-size: 20px;">Unity</a> <a href="/tags/Unity-Android/" style="font-size: 10px;">Unity,Android</a> <a href="/tags/other/" style="font-size: 10px;">other</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/Unity/" style="font-size: 20px;">Unity</a> <a href="/tags/Unity-Android/" style="font-size: 10px;">Unity,Android</a> <a href="/tags/other/" style="font-size: 10px;">other</a>
 					</div>
 				</section>
 				
@@ -164,11 +164,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-6" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-7" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/01/6/" class="article-date">
-  	<time datetime="2015-12-31T18:55:40.422Z" itemprop="datePublished">2016-01-01</time>
+      <a href="/2016/01/03/7/" class="article-date">
+  	<time datetime="2016-01-03T14:52:30.000Z" itemprop="datePublished">2016-01-03</time>
 </a>
     </div>
   
@@ -181,7 +181,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Android内存管理机制
+      C#中out和ref的区别
     </h1>
   
 
@@ -190,7 +190,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li></ul>
 	</div>
 
         
@@ -205,48 +205,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Android应用的内存分配</p>
+        <p>C#中用out、ref修饰变量的区别</p>
 <a id="more"></a>
-<h2 id="Android_u5185_u5B58_u7BA1_u7406_u673A_u5236"><a href="#Android_u5185_u5B58_u7BA1_u7406_u673A_u5236" class="headerlink" title="Android内存管理机制"></a>Android内存管理机制</h2><hr>
-<p>参考<a href="http://m.blog.csdn.net/blog/linghu_java/39480761.html" target="_blank" rel="external">这个文章</a></p>
-<h3 id="Android_u4E2DRAM_u3001ROM_u3001SD_u5361_u5185_u5B58_u7684_u533A_u522B"><a href="#Android_u4E2DRAM_u3001ROM_u3001SD_u5361_u5185_u5B58_u7684_u533A_u522B" class="headerlink" title="Android中RAM、ROM、SD卡内存的区别"></a>Android中RAM、ROM、SD卡内存的区别</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">name</th>
-<th style="text-align:left">解释</th>
-<th style="text-align:left">参照</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">RAM</td>
-<td style="text-align:left">RAM是物理内存，Android应用的堆内存(Heap)和栈内存(Stack)存储在RAM中</td>
-<td style="text-align:left">类似PC的内存条</td>
-</tr>
-<tr>
-<td style="text-align:left">ROM</td>
-<td style="text-align:left">ROM是虚拟内存，主要存储系统的文件，和App的相关数据，应用进程的内存空间也是虚拟内存</td>
-<td style="text-align:left">类似PC的C盘</td>
-</tr>
-<tr>
-<td style="text-align:left">SD卡</td>
-<td style="text-align:left">内存卡，存储应用数据和其他文件</td>
-<td style="text-align:left">类似PC的其他盘</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Android_u8FDB_u7A0B_u7684_u79CD_u7C7B_u548C_u533A_u522B"><a href="#Android_u8FDB_u7A0B_u7684_u79CD_u7C7B_u548C_u533A_u522B" class="headerlink" title="Android进程的种类和区别"></a>Android进程的种类和区别</h3><ol>
-<li><p>Native进程：C/C++通过jni实现</p>
-</li>
-<li><p>Java进程：Android中运行在dalvik虚拟机上的进程</p>
-</li>
-</ol>
-<h3 id="Android_u4E2D_u8FDB_u7A0B_u7684_u5806_u5185_u5B58_u79CD_u7C7B"><a href="#Android_u4E2D_u8FDB_u7A0B_u7684_u5806_u5185_u5B58_u79CD_u7C7B" class="headerlink" title="Android中进程的堆内存种类"></a>Android中进程的堆内存种类</h3><ol>
-<li><p>native heap：C/C++申请的内存空间在native heap中</p>
-</li>
-<li><p>dalvik heap：java申请的内存空间，Android系统对dalvik heap做了硬性限制，当java申请的java空间超过上限时，就会抛出OOM异常。</p>
-</li>
-</ol>
+<h2 id="C_23_u4E2Dout_u548Cref_u7684_u533A_u522B"><a href="#C_23_u4E2Dout_u548Cref_u7684_u533A_u522B" class="headerlink" title="C#中out和ref的区别"></a>C#中out和ref的区别</h2><p>在C#中变量前面可以使用out或者ref修饰，这两种修饰变量的方法类似C的指针，可以在函数中改变参数原先的值</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//out&#36825;&#31181;&#26041;&#24335;&#20250;&#22312;&#25226;&#21442;&#25968;&#20256;&#36827;&#21435;&#30340;&#26102;&#20505;&#65292;&#21442;&#25968;&#20026;&#31354;&#65292;&#21482;&#20986;&#19981;&#36827;&#10;void Method(out int a)&#10;&#123;&#10;    a = 5;&#10;&#125;&#10;&#10;//ref&#36825;&#31181;&#26041;&#24335;&#22312;&#20256;&#20837;&#21442;&#25968;&#30340;&#26102;&#20505;&#65292;&#21442;&#25968;&#20026;&#21407;&#26469;&#30340;&#20540;&#65292;&#24182;&#19988;&#20250;&#34987;&#20462;&#25913;&#65292;&#26377;&#20986;&#26377;&#36827;&#10;void Method(ref int a)&#10;&#123;&#10;    a = a + 1;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 
       
@@ -257,11 +219,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/01/01/7/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/01/03/6/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          (no title)
+          Android内存管理机制
         
       </div>
     </a>
@@ -314,7 +276,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="6" data-title="Android内存管理机制" data-url="http://yoursite.com/2016/01/01/6/"></div>
+	<div class="ds-thread" data-thread-key="7" data-title="C#中out和ref的区别" data-url="http://yoursite.com/2016/01/03/7/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2015 | SickQ&#39;s g</title>
+  <title>Android内存管理机制 | SickQ&#39;s g</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="record">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SickQ's g">
-<meta property="og:url" content="http://yoursite.com/archives/2015/index.html">
+  <meta name="description" content="Android应用的内存分配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android内存管理机制">
+<meta property="og:url" content="http://yoursite.com/2016/01/03/6/index.html">
 <meta property="og:site_name" content="SickQ's g">
-<meta property="og:description" content="record">
+<meta property="og:description" content="Android应用的内存分配">
+<meta property="og:updated_time" content="2016-01-03T15:00:38.048Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SickQ's g">
-<meta name="twitter:description" content="record">
+<meta name="twitter:title" content="Android内存管理机制">
+<meta name="twitter:description" content="Android应用的内存分配">
   
     <link rel="alternative" href="/atom.xml" title="SickQ&#39;s g" type="application/atom+xml">
   
@@ -163,197 +164,165 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-6" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/31/5/" class="archive-article-date">
-  	<time datetime="2015-12-30T16:58:30.000Z" itemprop="datePublished">12月 31</time>
+    <div class="article-meta">
+      <a href="/2016/01/03/6/" class="article-date">
+  	<time datetime="2016-01-03T15:00:38.048Z" itemprop="datePublished">2016-01-03</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/31/5/">Android生成KeyStore文件</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android内存管理机制
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/技术/">技术</a>
 	</div>
 
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android应用的内存分配</p>
+<a id="more"></a>
+<h2 id="Android_u5185_u5B58_u7BA1_u7406_u673A_u5236"><a href="#Android_u5185_u5B58_u7BA1_u7406_u673A_u5236" class="headerlink" title="Android内存管理机制"></a>Android内存管理机制</h2><p>参考<a href="http://m.blog.csdn.net/blog/linghu_java/39480761.html" target="_blank" rel="external">这个文章</a></p>
+<h3 id="Android_u4E2DRAM_u3001ROM_u3001SD_u5361_u5185_u5B58_u7684_u533A_u522B"><a href="#Android_u4E2DRAM_u3001ROM_u3001SD_u5361_u5185_u5B58_u7684_u533A_u522B" class="headerlink" title="Android中RAM、ROM、SD卡内存的区别"></a>Android中RAM、ROM、SD卡内存的区别</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">name</th>
+<th style="text-align:left">解释</th>
+<th style="text-align:left">参照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">RAM</td>
+<td style="text-align:left">RAM是物理内存，Android应用的堆内存(Heap)和栈内存(Stack)存储在RAM中</td>
+<td style="text-align:left">类似PC的内存条</td>
+</tr>
+<tr>
+<td style="text-align:left">ROM</td>
+<td style="text-align:left">ROM是虚拟内存，主要存储系统的文件，和App的相关数据，应用进程的内存空间也是虚拟内存</td>
+<td style="text-align:left">类似PC的C盘</td>
+</tr>
+<tr>
+<td style="text-align:left">SD卡</td>
+<td style="text-align:left">内存卡，存储应用数据和其他文件</td>
+<td style="text-align:left">类似PC的其他盘</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Android_u8FDB_u7A0B_u7684_u79CD_u7C7B_u548C_u533A_u522B"><a href="#Android_u8FDB_u7A0B_u7684_u79CD_u7C7B_u548C_u533A_u522B" class="headerlink" title="Android进程的种类和区别"></a>Android进程的种类和区别</h3><ol>
+<li><p>Native进程：C/C++通过jni实现</p>
+</li>
+<li><p>Java进程：Android中运行在dalvik虚拟机上的进程</p>
+</li>
+</ol>
+<h3 id="Android_u4E2D_u8FDB_u7A0B_u7684_u5806_u5185_u5B58_u79CD_u7C7B"><a href="#Android_u4E2D_u8FDB_u7A0B_u7684_u5806_u5185_u5B58_u79CD_u7C7B" class="headerlink" title="Android中进程的堆内存种类"></a>Android中进程的堆内存种类</h3><ol>
+<li><p>native heap：C/C++申请的内存空间在native heap中</p>
+</li>
+<li><p>dalvik heap：java申请的内存空间，Android系统对dalvik heap做了硬性限制，当java申请的java空间超过上限时，就会抛出OOM异常。</p>
+</li>
+</ol>
+<hr>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/03/7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C#中out和ref的区别</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/31/3/" class="archive-article-date">
-  	<time datetime="2015-12-30T16:25:30.000Z" itemprop="datePublished">12月 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/31/3/">Unity与Android通信</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity-Android/">Unity,Android</a></li></ul>
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/技术/">技术</a>
-	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/30/4/" class="archive-article-date">
-  	<time datetime="2015-12-29T16:30:30.000Z" itemprop="datePublished">12月 30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/30/4/">Android播放视频</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/技术/">技术</a>
-	</div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/29/2/" class="archive-article-date">
-  	<time datetime="2015-12-29T15:58:30.000Z" itemprop="datePublished">12月 29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/29/2/">Unity中单例模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/技术/">技术</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/29/1/" class="archive-article-date">
-  	<time datetime="2015-12-29T15:52:30.000Z" itemprop="datePublished">12月 29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/29/1/">First</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/">other</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/None/">None</a>
-	</div>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="6" data-title="Android内存管理机制" data-url="http://yoursite.com/2016/01/03/6/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"sickq"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
 
 </div>
       <footer id="footer">
@@ -379,8 +348,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
