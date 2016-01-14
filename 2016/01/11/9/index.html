@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Unity中Android插件的接入 | SickQ&#39;s g</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在Unity开发Android游戏的时候，经常会遇到需要接入Android插件的时候">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity中Android插件的接入">
+<meta property="og:url" content="http://yoursite.com/2016/01/11/9/index.html">
+<meta property="og:site_name" content="SickQ's g">
+<meta property="og:description" content="在Unity开发Android游戏的时候，经常会遇到需要接入Android插件的时候">
+<meta property="og:image" content="http://developer.qq.com/wiki/xg/imgs/20151029163904_73066.png">
+<meta property="og:updated_time" content="2016-01-14T16:15:58.275Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity中Android插件的接入">
+<meta name="twitter:description" content="在Unity开发Android游戏的时候，经常会遇到需要接入Android插件的时候">
+  
+    <link rel="alternative" href="/atom.xml" title="SickQ&#39;s g" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://img.xiami.net/images/collect_pic/11-30/1448813172_HKFn.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">SickQ</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sickq" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2401998961/home?wvr=5" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/Shader/" style="font-size: 10px;">Shader</a> <a href="/tags/Unity/" style="font-size: 20px;">Unity</a> <a href="/tags/other/" style="font-size: 10px;">other</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">biubiubiu</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">SickQ</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://img.xiami.net/images/collect_pic/11-30/1448813172_HKFn.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">SickQ</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sickq" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2401998961/home?wvr=5" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-9" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/11/9/" class="article-date">
+  	<time datetime="2016-01-11T02:33:00.000Z" itemprop="datePublished">2016-01-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Unity中Android插件的接入
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Unity开发Android游戏的时候，经常会遇到需要接入Android插件的时候</p>
+<a id="more"></a>
+<h2 id="Android_u63D2_u4EF6"><a href="#Android_u63D2_u4EF6" class="headerlink" title="Android插件"></a>Android插件</h2><ul>
+<li>Yunva</li>
+<li>QuickSdk</li>
+<li>XGPush</li>
+<li>Flurry</li>
+</ul>
+<p>有两类型的Android插件：<br>一种是比较完善，直接支持Unity的，Yunva，Flurry的Prime31插件<br>另一种是只提供Android层的插件，需要自己集成到Unity中，QuickSdk和XGPush  </p>
+<p>针对第一种，比较好集成，按照相应的文档就可以，基本就是把相关的lib、assets、res和相应插件的集成jar包放入工程，再修改AndroidManifest文件即可。  </p>
+<p>针对第二种，就需要手动封装好Android和Unity的交互接口了，有两种交互方式。封装好接口之后，集成方法同第一种。</p>
+<h1 id="Android_u4E0EUnity_u901A_u4FE1"><a href="#Android_u4E0EUnity_u901A_u4FE1" class="headerlink" title="Android与Unity通信"></a>Android与Unity通信</h1><p>目的是在Android下封装好sdk与Unity通信的API，集合成一个jar包，在Unity中调用</p>
+<h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h5><p>创建新的Android工程，包名最好要与Unity中的一致</p>
+<h5 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h5><p> 找到这个路径\Unity\Editor\Data\PlaybackEngines\androidplayer\release\bin\classes.jar下的jar包，加入到Android工程的libs中，这个库是Unity为Android提供的一个库，主要提供了支持该平台的API。</p>
+<h6 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h6><p>编写如下脚本（保留了比较重要的代码）<br>Android调用Unity函数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnityPlayer.UnitySendMessage(String gameObjectName, String method, String params)</span><br></pre></td></tr></table></figure></p>
+<p>gameObjectName：为Untiy Scene中的物体名称<br>methodName：为对应物体上面的脚本中函数的名字<br>params：需要传入函数的参数  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.taiyouxi.a3k;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.unity3d.player.UnityPlayer;</span><br><span class="line"><span class="keyword">import</span> com.unity3d.player.UnityPlayerActivity;</span><br><span class="line"></span><br><span class="line"><span class="comment">//需要把Activity改成从UnityPlayerActivity继承</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">UnityPlayerActivity</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Context context;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">        context = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//初始化设置Quick相关的参数和必要的回调通知</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ShowLog</span><span class="params">(String log)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">    	UnityPlayer.UnitySendMessage(<span class="string">"GameObjectName"</span>, <span class="string">"MethodName"</span>, log);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CallBack</span><span class="params">(String log)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">    	UnityPlayer.UnitySendMessage(<span class="string">"GameObjectName"</span>, <span class="string">"MethodName1"</span>, log);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Login</span><span class="params">(<span class="keyword">final</span> Activity currentActivity)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">    	currentActivity.runOnUiThread(<span class="keyword">new</span> Runnable()</span><br><span class="line">    	&#123;</span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span><br><span class="line">			</span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Logout</span><span class="params">(<span class="keyword">final</span> Activity currentActivity)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">    	currentActivity.runOnUiThread(<span class="keyword">new</span> Runnable()</span><br><span class="line">    	&#123;</span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span><br><span class="line">			</span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码继承了UnityPlayerActivity，才可以使用UnityPlayer.UnitySendMessage()等相关Unity提供的方法。因为SDK中不需要布局文件，所以不需要setContentView()</p>
+<h5 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h5><p>之后导出jar包，导出jar包的时候只需要导出对应的src文件夹即可，其余的都不需要。</p>
+<h5 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h5><p>将对应的jar包放入对应的文件夹下</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Assets</span><br><span class="line">    Plugins</span><br><span class="line">        Android</span><br><span class="line">            <span class="function"><span class="title">bin</span><span class="params">(存放导出来的jar)</span></span></span><br><span class="line">            <span class="function"><span class="title">libs</span><span class="params">(第三方sdk的jar)</span></span></span><br><span class="line">            <span class="function"><span class="title">res</span><span class="params">(资源文件)</span></span></span><br><span class="line">            AndroidManifest.xml</span><br></pre></td></tr></table></figure>
+<h5 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h5><p>编写Unity的脚本</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">InitSdk</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    AndroidJavaClass jc = <span class="keyword">new</span> AndroidJavaClass (<span class="string">"com.unity3d.player.UnityPlayer"</span>);</span><br><span class="line">    _mActivity = jc.GetStatic&lt;AndroidJavaObject&gt;(<span class="string">"currentActivity"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">Login</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_mActivity == <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ShowLog(<span class="string">"_mActivity not be inited"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _mActivity.Call(<span class="string">"Login"</span>, _mActivity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Unity中调用Android函数<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AndroidJavaClass jc = new AndroidJavaClass(&#34;com.unity3d.player.UnityPlayer&#34;);&#10;AndroidJavaObject jo = jc.GetStatic&#60;AndroidJavaObject&#62;(&#34;currentActivity&#34;);&#10;jo.Call(&#34;methodInJava&#34;, params);</span><br></pre></td></tr></table></figure></p>
+<h5 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h5><p>编写AndroidManifest.xml文件</p>
+<p>加入MainActivity，并设为启动Activity</p>
+<h5 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h5><p>踩过的坑</p>
+<ul>
+<li><p>Quick要求的函数必须在Java的UI线程中调用，但是直接调用的Android函数是不会在UI线程中调用的<br>解决方案：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">currentActivity.runOnUiThread(<span class="keyword">new</span> Runnable()</span><br><span class="line">&#123;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="comment">//TODO</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需要的资源文件，同时放在Unity下的Assets/Plugins/Android/res，在Unity5中，如果这么做，会在导出工程时，附带一个单独的只包含res下资源的lib工程。<br>解决方案：建议在导出工程之后在单独将res文件移动到导出的android工程中</p>
+</li>
+<li><p>如果jar包中包含带布局的Activity的时候，不能获得在jar包外的布局文件、value等的ID。因为R文件是自动生成的，ID会变化。<br>解决方案：在jar包中采用反射动态获得资源文件的ID</p>
+</li>
+</ul>
+<h2 id="u63A8_u9001"><a href="#u63A8_u9001" class="headerlink" title="推送"></a>推送</h2><p><img src="http://developer.qq.com/wiki/xg/imgs/20151029163904_73066.png" alt="1"></p>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>原理：从后台或则服务器，推送消息到信鸽推送的服务器，之后可以按照token，或者账号推送到不同设备，设备成功收到推送。</p>
+<h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>原理：<br>首先需要上传项目用到的开发证书和生产证书到信鸽网站的后台。ios推送是通过证书和token定位到设备的。<br>从后台或者服务器，推送消息到苹果的APNS，之后根据证书和token，推送到不同设备，设备成功收到推送。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/04/8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">&lt;Shader&gt;基本的光照模型</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="9" data-title="Unity中Android插件的接入" data-url="http://yoursite.com/2016/01/11/9/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"sickq"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 SickQ
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
